@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OldDriverManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RootPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">./_data/</Value>
+    </Setting>
+    <Setting Name="TagsFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">tags.json</Value>
+    </Setting>
+    <Setting Name="ActorsFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">actors.json</Value>
+    </Setting>
+    <Setting Name="DataFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">data.json</Value>
+    </Setting>
+    <Setting Name="LoadingImgFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Loading.gif</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
