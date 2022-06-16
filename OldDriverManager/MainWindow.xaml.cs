@@ -378,5 +378,11 @@ namespace OldDriverManager
             }
         }
 
+        private void Graph_Click(object sender, RoutedEventArgs e)
+        {
+            
+            NetworkGraphWindow networkGraphWindow = new NetworkGraphWindow(metadataList);
+            networkGraphWindow.ShowDialog();
+        }
     }
 }

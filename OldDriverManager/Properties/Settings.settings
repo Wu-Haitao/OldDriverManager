@@ -14,7 +14,7 @@
     <Setting Name="DataFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">data.json</Value>
     </Setting>
-    <Setting Name="LoadingImgFileName" Type="System.String" Scope="User">
+    <Setting Name="LoadingImgFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Loading.gif</Value>
     </Setting>
   </Settings>

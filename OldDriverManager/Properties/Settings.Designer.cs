@@ -59,15 +59,12 @@ namespace OldDriverManager.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Loading.gif")]
         public string LoadingImgFileName {
             get {
                 return ((string)(this["LoadingImgFileName"]));
-            }
-            set {
-                this["LoadingImgFileName"] = value;
             }
         }
     }
