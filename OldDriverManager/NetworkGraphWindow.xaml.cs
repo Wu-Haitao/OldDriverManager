@@ -75,8 +75,8 @@ namespace OldDriverManager
                 }
             }
 
-            nodes = nodes.Substring(0, nodes.Length - 1);
-            edges = edges.Substring(0, edges.Length - 1);
+            if (nodes[nodes.Length - 1] == ',') nodes = nodes.Substring(0, nodes.Length - 1);
+            if (edges[edges.Length - 1] == ',') edges = edges.Substring(0, edges.Length - 1);
 
             nodes += "])";
             edges += "])";

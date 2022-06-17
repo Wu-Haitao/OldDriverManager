@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace OldDriverManager
 {
@@ -142,7 +143,8 @@ namespace OldDriverManager
             }
             else
             {
-                MessageBox.Show("错误，请检查格式");
+                //MessageBox.Show("错误，请检查格式");
+                this.ShowMessageAsync("错误，请检查格式", "");
             }
         }
 
