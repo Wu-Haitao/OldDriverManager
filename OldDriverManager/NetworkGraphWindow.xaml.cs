@@ -61,7 +61,7 @@ namespace OldDriverManager
             }
             for (int i = 0; i < pivot.Count; i++)
             {
-                nodes += "{id:" + (i + metadataList.Count) + ",label:\"" + pivot[i] + "\",shape:\"dot\",color:\"#5c5c5c\",size:10},";
+                nodes += "{id:" + (i + metadataList.Count) + ",label:\"" + pivot[i] + "\",shape:\"dot\",color:\"#c9c9c9\",size:5},";
             }
 
             for (int i = 0; i < metadataList.Count; i++)
@@ -70,7 +70,7 @@ namespace OldDriverManager
                 {
                     if (metadataList[i].actors.Contains(pivot[j]) || metadataList[i].tags.Contains(pivot[j]))
                     {
-                        edges += "{from:" + i + ",to:" + (metadataList.Count + j) + ",color:\"#5c5c5c\"},";
+                        edges += "{from:" + i + ",to:" + (metadataList.Count + j) + ",color:\"#b6b6b6\"},";
                     }
                 }
             }
