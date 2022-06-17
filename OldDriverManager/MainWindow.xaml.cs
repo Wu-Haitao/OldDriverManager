@@ -24,6 +24,7 @@ using Color = System.Windows.Media.Color;
 using Image = System.Drawing.Image;
 using Path = System.IO.Path;
 using Size = System.Drawing.Size;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace OldDriverManager
 {
@@ -208,10 +209,14 @@ namespace OldDriverManager
             Process.Start("explorer.exe", selectedMetadata.path);
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (TitleList.SelectedIndex == -1) return;
-            if (MessageBox.Show("确定要删除吗？", "确认", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+
+            MessageDialogResult result = await this.ShowMessageAsync("确定要删除吗？", "", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Negative) return;
+
+            //if (MessageBox.Show("确定要删除吗？", "确认", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
 
             metadataList.RemoveAt(TitleList.SelectedIndex);
             WriteDataToFile();
