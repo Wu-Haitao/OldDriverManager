@@ -165,14 +165,14 @@ namespace OldDriverManager
             if (TitleList.SelectedIndex == -1) return;
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
             metadataList.RemoveAt(TitleList.SelectedIndex);
-            EditWindow editWindow = new EditWindow(selectedMetadata);
+            EditWindow editWindow = new EditWindow(selectedMetadata, TitleList.SelectedIndex);
             editWindow.Title = "编辑";
             editWindow.metadataDelegate += new MetadataDelegate(EditMetadata);
             editWindow.ShowDialog();
             
         }
 
-        void EditMetadata(Metadata? metadata)
+        void EditMetadata(Metadata? metadata, int index)
         {
             if (metadata == null)
             {
@@ -187,7 +187,15 @@ namespace OldDriverManager
                 }
                 else
                 {
-                    metadataList.Add(metadata);
+                    if (index == -1)
+                    {
+                        //Add
+                        metadataList.Add(metadata);
+                    }
+                    else
+                    {
+                        metadataList.Insert(index, metadata);
+                    }
                     WriteDataToFile();
                 }
             }

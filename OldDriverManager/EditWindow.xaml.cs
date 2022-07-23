@@ -25,23 +25,24 @@ namespace OldDriverManager
     /// <summary>
     /// EditWindow.xaml 的交互逻辑
     /// </summary>
-    public delegate void MetadataDelegate(Metadata? metadata);
+    public delegate void MetadataDelegate(Metadata? metadatam, int index);
     public partial class EditWindow : MetroWindow
     {
         public MetadataDelegate metadataDelegate;
 
         Metadata? returnMetadata = null;
+        int returnIndex = -1;
         public EditWindow()
         {
             InitializeComponent();
             RefreshTagAndActor();
         }
 
-        public EditWindow(Metadata metadata)
+        public EditWindow(Metadata metadata, int index)
         {
             InitializeComponent();
             RefreshTagAndActor();
-            Init(metadata);
+            Init(metadata, index);
         }
 
         void RefreshTagAndActor()
@@ -76,9 +77,10 @@ namespace OldDriverManager
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        void Init(Metadata metadata)
+        void Init(Metadata metadata, int index)
         {
             returnMetadata = metadata;
+            returnIndex = index;
 
             FilePath.Content = metadata.path;
             FileTitle.Text = metadata.title;
@@ -150,7 +152,7 @@ namespace OldDriverManager
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            metadataDelegate(returnMetadata);
+            metadataDelegate(returnMetadata, returnIndex);
         }
     }
 }
