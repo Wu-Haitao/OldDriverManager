@@ -382,12 +382,10 @@ namespace OldDriverManager
 
         private void MarkFilteredResult()
         {
-
             for (int index = 0; index < filterMarkNumber; index++)
             {
                 ListBoxItem item = (ListBoxItem)TitleList.ItemContainerGenerator.ContainerFromIndex(index);
-                if (item == null) return;
-                item.Background = new SolidColorBrush(Colors.DarkGray);
+                if (item != null) item.Background = new SolidColorBrush(Colors.DarkGray);
             }
         }
 
