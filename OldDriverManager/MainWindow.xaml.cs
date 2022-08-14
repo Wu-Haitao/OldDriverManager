@@ -303,7 +303,7 @@ namespace OldDriverManager
 
                     if ((selectedMetadata.previewMin >= 0) && (selectedMetadata.previewMin <= videoLength))
                     {
-                        Bitmap bitmap = await FFMpeg.SnapshotAsync(selectedMetadata.path, new Size(videoWidth / 10, videoHeight / 10), TimeSpan.FromMinutes(selectedMetadata.previewMin), 0, 0);
+                        Bitmap bitmap = await FFMpeg.SnapshotAsync(selectedMetadata.path, new Size(videoWidth / 10, videoHeight / 10), TimeSpan.FromMinutes(selectedMetadata.previewMin));
                         BitmapSource bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                         if (currentIndex != TitleList.SelectedIndex) return;
                         Poster.Source = bitmapSource;
