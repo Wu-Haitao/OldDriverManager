@@ -25,6 +25,7 @@ using Image = System.Drawing.Image;
 using Path = System.IO.Path;
 using Size = System.Drawing.Size;
 using MahApps.Metro.Controls.Dialogs;
+using MediaInfo;
 
 namespace OldDriverManager
 {
@@ -169,7 +170,7 @@ namespace OldDriverManager
             editWindow.Title = "编辑";
             editWindow.metadataDelegate += new MetadataDelegate(EditMetadata);
             editWindow.ShowDialog();
-            
+
         }
 
         void EditMetadata(Metadata? metadata, int index)
@@ -207,14 +208,28 @@ namespace OldDriverManager
         {
             if (TitleList.SelectedIndex == -1) return;
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
-            Process.Start("explorer.exe", Path.GetDirectoryName(selectedMetadata.path));
+            if (File.Exists(selectedMetadata.path))
+            {
+                Process.Start("explorer.exe", Path.GetDirectoryName(selectedMetadata.path));
+            }
+            else
+            {
+                this.ShowMessageAsync("错误，请检查路径", "");
+            }
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
             if (TitleList.SelectedIndex == -1) return;
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
-            Process.Start("explorer.exe", selectedMetadata.path);
+            if (File.Exists(selectedMetadata.path))
+            {
+                Process.Start("explorer.exe", selectedMetadata.path);
+            }
+            else
+            {
+                this.ShowMessageAsync("错误，请检查路径", "");
+            }
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
@@ -234,14 +249,20 @@ namespace OldDriverManager
 
         private async void TitleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TitleList.SelectedIndex == -1) return;
+            if (TitleList.SelectedIndex == -1)
+            {
+                ResetInfo();
+                return;
+            }
+
+            this.Cursor = Cursors.Wait;
 
             int currentIndex = TitleList.SelectedIndex;
 
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
 
             FileTitle.Text = selectedMetadata.title;
-            
+
             string fileDetail = "";
             foreach (string actor in selectedMetadata.actors)
             {
@@ -260,22 +281,30 @@ namespace OldDriverManager
             Poster.Source = null;
             Loading.Visibility = Visibility.Visible;
 
+
             if (File.Exists(selectedMetadata.path))
             {
                 try
                 {
-                    var mediaInfo = await FFProbe.AnalyseAsync(selectedMetadata.path);
-                    string fileProperty = "格式：" + Path.GetExtension(selectedMetadata.path).Substring(1) + System.Environment.NewLine
-                        + "长度：" + mediaInfo.Duration.ToString() + System.Environment.NewLine
-                        + "分辨率：" + mediaInfo.PrimaryVideoStream.Width.ToString() + " * " + mediaInfo.PrimaryVideoStream.Height.ToString();
+                    MediaInfo.MediaInfo info = new MediaInfo.MediaInfo();
+                    info.Open(selectedMetadata.path);
+                    double videoLength = int.Parse(info.Get(StreamKind.Video, 0, "Duration")) / 60000d;
+                    int videoWidth = int.Parse(info.Get(StreamKind.Video, 0, "Width"));
+                    int videoHeight = int.Parse(info.Get(StreamKind.Video, 0, "Height"));
+                    info.Close();
+
+                    TimeSpan videoDuration = TimeSpan.FromMinutes(videoLength);
+
+                    string fileProperty = String.Format("长度：{0:hh\\:mm\\:ss}\n分辨率：{1} * {2}", videoDuration, videoWidth, videoHeight);
                     if (currentIndex != TitleList.SelectedIndex) return;
                     FileProperty.Text = fileProperty;
 
-                    if ((selectedMetadata.previewMin >= 0) && (selectedMetadata.previewMin <= mediaInfo.Duration.TotalMinutes))
-                    {
+                    this.Cursor = Cursors.Arrow;
 
-                        var bitmap = await FFMpeg.SnapshotAsync(selectedMetadata.path, new Size(192, 108), TimeSpan.FromMinutes(selectedMetadata.previewMin));
-                        var bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    if ((selectedMetadata.previewMin >= 0) && (selectedMetadata.previewMin <= videoLength))
+                    {
+                        Bitmap bitmap = await FFMpeg.SnapshotAsync(selectedMetadata.path, new Size(videoWidth / 10, videoHeight / 10), TimeSpan.FromMinutes(selectedMetadata.previewMin), 0, 0);
+                        BitmapSource bitmapSource = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                         if (currentIndex != TitleList.SelectedIndex) return;
                         Poster.Source = bitmapSource;
                         Loading.Visibility = Visibility.Hidden;
@@ -286,8 +315,12 @@ namespace OldDriverManager
                     Debug.WriteLine(ex.ToString());
                 }
             }
-
+            else {
+                this.Cursor = Cursors.Arrow;
+                await this.ShowMessageAsync("错误，请检查路径", "");
+            }
         }
+
 
         /// <summary>
         /// Clears all the info including title, file properties, and preview image
@@ -310,7 +343,17 @@ namespace OldDriverManager
 
         void SortByRank()
         {
-            metadataList.Sort((b, a) => a.rank.CompareTo(b.rank));
+            metadataList.Sort((b, a) =>
+            {
+                if (a.rank.CompareTo(b.rank) != 0)
+                {
+                    return a.rank.CompareTo(b.rank);
+                }
+                else
+                {
+                    return b.title.CompareTo(a.title);
+                }
+            });
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
@@ -391,7 +434,7 @@ namespace OldDriverManager
 
         private void Graph_Click(object sender, RoutedEventArgs e)
         {
-            
+
             NetworkGraphWindow networkGraphWindow = new NetworkGraphWindow(metadataList);
             networkGraphWindow.ShowDialog();
         }
