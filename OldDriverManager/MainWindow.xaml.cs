@@ -436,7 +436,7 @@ namespace OldDriverManager
         {
 
             NetworkGraphWindow networkGraphWindow = new NetworkGraphWindow(metadataList);
-            networkGraphWindow.ShowDialog();
+            networkGraphWindow.Show();
         }
     }
 }
