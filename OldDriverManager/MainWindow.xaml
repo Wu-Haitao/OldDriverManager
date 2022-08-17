@@ -22,16 +22,16 @@
         <Button x:Name="Config" Content="设置" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Config_Click" Padding="2,2,2,2"/>
         <TextBlock x:Name="FileTitle" HorizontalAlignment="Right" Margin="0,55,25,0" TextWrapping="Wrap" Text="影片标题" VerticalAlignment="Top" Height="40" Width="150" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
         <ScrollViewer Margin="0,135,25,0" Height="120" Width="150" VerticalAlignment="Top" HorizontalAlignment="Right" >
-            <TextBlock x:Name="FileDetails" TextWrapping="Wrap" Text="影片详情" FontWeight="Normal" TextTrimming="None" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
+            <TextBox x:Name="FileDetails" Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
         </ScrollViewer>
         <Slider x:Name="Rank" HorizontalAlignment="Right" Margin="0,285,25,0" VerticalAlignment="Top" Width="150" Maximum="5" SmallChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" Height="25" IsEnabled="False"/>
         <Label Content="排序" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
         <Label Content="筛选" HorizontalAlignment="Left" Margin="160,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
-        <Button x:Name="Add" Content="添加" HorizontalAlignment="Left" Margin="25,440,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Add_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Edit" Content="编辑" HorizontalAlignment="Left" Margin="25,480,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Edit_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Delete" Content="删除" HorizontalAlignment="Left" Margin="25,520,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Delete_Click" Padding="2,2,2,2"/>
-        <Button x:Name="OpenPath" Content="打开文件所在路径" HorizontalAlignment="Left" Margin="175,440,0,0" VerticalAlignment="Top" Width="165" Height="25" Click="OpenPath_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Play" Content="播放" HorizontalAlignment="Left" Margin="175,485,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="16" FontWeight="Normal" Click="Play_Click" Padding="5,5,5,5"/>
+        <Button x:Name="Add" Content="➕ 添加" HorizontalAlignment="Left" Margin="25,440,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Add_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Edit" Content="✏ 编辑" HorizontalAlignment="Left" Margin="25,480,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Edit_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Delete" Content="➖ 删除" HorizontalAlignment="Left" Margin="25,520,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Delete_Click" Padding="2,2,2,2"/>
+        <Button x:Name="OpenPath" Content="📂 打开文件所在路径" HorizontalAlignment="Left" Margin="175,440,0,0" VerticalAlignment="Top" Width="165" Height="25" Click="OpenPath_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Play" Content="▶ 播放" HorizontalAlignment="Left" Margin="175,485,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="16" FontWeight="Normal" Click="Play_Click" Padding="5,5,5,5"/>
         <TextBlock x:Name="FileProperty" HorizontalAlignment="Left" Margin="25,360,0,0" TextWrapping="Wrap" Text="文件属性" VerticalAlignment="Top" Height="60" Width="315" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
         <Label Content="影片标题" HorizontalAlignment="Right" Margin="0,20,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80"/>
         <Label Content="影片详情" HorizontalAlignment="Right" Margin="0,100,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80" Padding="5,5,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -43,6 +43,7 @@
             </Grid>
         </Border>
         <Label Content="文件预览" HorizontalAlignment="Left" Margin="405,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="👁" HorizontalAlignment="Right" Margin="0,100,25,0" VerticalAlignment="Top" Click="Graph_Click" Width="40" Height="28" FontWeight="Normal" FontSize="10"/>
+        <Button Content="📋" HorizontalAlignment="Right" Margin="0,25,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="40" Height="20" FontWeight="Normal" FontSize="10"/>
+        <Button Content="👁" HorizontalAlignment="Right" Margin="0,100,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Graph_Click" Width="40" Height="20" FontWeight="Normal" FontSize="10"/>
     </Grid>
 </mah:MetroWindow>

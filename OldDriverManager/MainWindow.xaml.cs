@@ -438,5 +438,12 @@ namespace OldDriverManager
             NetworkGraphWindow networkGraphWindow = new NetworkGraphWindow(metadataList);
             networkGraphWindow.Show();
         }
+
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+            if (FileTitle.Text != "") {
+                Clipboard.SetText(FileTitle.Text);
+            }
+        }
     }
 }
