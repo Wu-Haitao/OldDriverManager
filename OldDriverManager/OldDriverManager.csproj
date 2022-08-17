@@ -8,12 +8,14 @@
     <ApplicationIcon>Resource\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Resource\icon.jpg" />
-  </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resource\icon.ico" />
+    <Content Include="Resource\vis-network.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\vis-network.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resource\icon.jpg">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Resource\icon.jpg"></Resource>
     <Resource Include="Resource\Loading.gif" />
+	<Resource Include="Resource\icon.ico"></Resource>
   </ItemGroup>
 
   <ItemGroup>

@@ -35,12 +35,15 @@ namespace OldDriverManager
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            UpdateNetworkGraph();
+            if (Graph.CoreWebView2 != null)
+            {
+                Graph.Reload();
+            }
         }
 
         private async void UpdateNetworkGraph()
         {
-            await Graph.EnsureCoreWebView2Async();
+            this.Cursor = Cursors.Wait;
 
             List<string> pivot = new();
 
@@ -49,7 +52,7 @@ namespace OldDriverManager
 
             for (int i = 0; i < metadataList.Count; i++)
             {
-                nodes += "{id:" + i + ",label:\"" + ((metadataList[i].title.Length > 20)? (metadataList[i].title.Substring(0, 20) + "...") : metadataList[i].title) + "\",title:\"" + metadataList[i].title + "\",shape:\"dot\",color:\"#5c5c5c\",size:10},";
+                nodes += "{id:" + i + ",label:\"" + ((metadataList[i].title.Length > 20) ? (metadataList[i].title.Substring(0, 20) + "...") : metadataList[i].title) + "\",title:\"" + metadataList[i].title + "\",shape:\"dot\",color:\"#5c5c5c\",size:10},";
                 foreach (string actor in metadataList[i].actors)
                 {
                     if (!pivot.Contains(actor)) pivot.Add(actor);
@@ -81,13 +84,28 @@ namespace OldDriverManager
             nodes += "])";
             edges += "])";
 
-            string html = "<html><head><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css\" type=\"text/css\"><script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js\"></script><center><h1></h1></center><style type=\"text/css\">#mynetwork{background-color:#fff;border:1px solid #d3d3d3;position:relative;float:left}</style></head><body><div id=\"mynetwork\"></div><script type=\"text/javascript\">function drawGraph(){var e=document.getElementById(\"mynetwork\");nodes=" + nodes + ",edges=" + edges + ",data={nodes:nodes,edges:edges};var o={configure:{enabled:!1},edges:{color:{inherit:!0},smooth:{enabled:!0,type:\"dynamic\"}},interaction:{dragNodes:!0,hideEdgesOnDrag:!1,hideNodesOnDrag:!1},physics:{enabled:!0,stabilization:{enabled:!0,fit:!0,iterations:1e3,onlyDynamicEdges:!1,updateInterval:50}}};return network=new vis.Network(e,data,o),network}var edges,nodes,network,container,options,data;drawGraph()</script></body></html>";
+            string css = "https://Resource/vis-network.css";
+            string js = "https://Resource/vis-network.min.js";
+
+            string html = "<html><head><link rel=\"stylesheet\" href=\"" + css + "\" type=\"text/css\"><script type=\"text/javascript\" src=\"" + js + "\"></script><center><h1></h1></center><style type=\"text/css\">#mynetwork{background-color:#fff;border:1px solid #d3d3d3;position:relative;float:left}</style></head><body><div id=\"mynetwork\"></div><script type=\"text/javascript\">function drawGraph(){var e=document.getElementById(\"mynetwork\");nodes=" + nodes + ",edges=" + edges + ",data={nodes:nodes,edges:edges};var o={configure:{enabled:!1},edges:{color:{inherit:!0},smooth:{enabled:!0,type:\"dynamic\"}},layout:{improvedLayout:!1},interaction:{dragNodes:!0,hideEdgesOnDrag:!1,hideNodesOnDrag:!1},physics:{enabled:!0,stabilization:{enabled:!0,fit:!0,iterations:1e3,onlyDynamicEdges:!1,updateInterval:50}}};return network=new vis.Network(e,data,o),network}var edges,nodes,network,container,options,data;drawGraph()</script></body></html>";
+
+            await Graph.EnsureCoreWebView2Async();
+
+            Graph.CoreWebView2.SetVirtualHostNameToFolderMapping("Resource", "Resource", Microsoft.Web.WebView2.Core.CoreWebView2HostResourceAccessKind.Allow);
+            
             Graph.NavigateToString(html);
+
+            this.Cursor = Cursors.Arrow;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Graph.Dispose();
         }
     }
 }

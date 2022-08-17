@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:OldDriverManager"
         xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" x:Class="OldDriverManager.NetworkGraphWindow"
         mc:Ignorable="d"
-        Title="网络视图" Height="450" Width="500" WindowStartupLocation="CenterScreen">
+        Title="网络视图" Height="450" Width="500" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid>
         <Button x:Name="Update" Content="刷新" HorizontalAlignment="Left" Margin="25,0,0,50" VerticalAlignment="Bottom" Width="60" Height="30" Click="Update_Click"/>
         <Button x:Name="Exit" Content="退出" HorizontalAlignment="Left" Margin="100,0,0,50" VerticalAlignment="Bottom" Width="60" Height="30" Click="Exit_Click"/>
