@@ -43,7 +43,7 @@
             </Grid>
         </Border>
         <Label Content="文件预览" HorizontalAlignment="Left" Margin="405,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="📋" HorizontalAlignment="Right" Margin="0,25,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="40" Height="20" FontWeight="Normal" FontSize="10"/>
-        <Button Content="👁" HorizontalAlignment="Right" Margin="0,100,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Graph_Click" Width="40" Height="20" FontWeight="Normal" FontSize="10"/>
+        <Button Content="📋" HorizontalAlignment="Right" Margin="0,25,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="30" Height="20" FontWeight="Normal" FontSize="10"/>
+        <Button Content="👁" HorizontalAlignment="Right" Margin="0,105,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Graph_Click" Width="30" Height="20" FontWeight="Normal" FontSize="10"/>
     </Grid>
 </mah:MetroWindow>
