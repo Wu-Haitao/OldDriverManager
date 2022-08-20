@@ -19,7 +19,7 @@
         <TextBox x:Name="KeyFilter" HorizontalAlignment="Left" Margin="190,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="20"/>
         <Button x:Name="Apply" Content="应用" HorizontalAlignment="Left" Margin="365,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Apply_Click" Padding="2,2,2,2"/>
         <Button x:Name="Batch" Content="批量" HorizontalAlignment="Left" Margin="420,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Batch_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Config" Content="设置" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Config_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Config" Content="属性" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Config_Click" Padding="2,2,2,2"/>
         <TextBlock x:Name="FileTitle" HorizontalAlignment="Right" Margin="0,55,25,0" TextWrapping="Wrap" Text="影片标题" VerticalAlignment="Top" Height="40" Width="150" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
         <ScrollViewer Margin="0,135,25,0" Height="120" Width="150" VerticalAlignment="Top" HorizontalAlignment="Right" >
             <TextBox x:Name="FileDetails" Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
