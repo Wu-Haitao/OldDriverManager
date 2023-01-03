@@ -203,7 +203,8 @@ namespace OldDriverManager
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
             if (File.Exists(selectedMetadata.path))
             {
-                Process.Start("explorer.exe", Path.GetDirectoryName(selectedMetadata.path));
+                string argument = "/select, \"" + selectedMetadata.path + "\"";
+                Process.Start("explorer.exe", argument);
             }
             else
             {
