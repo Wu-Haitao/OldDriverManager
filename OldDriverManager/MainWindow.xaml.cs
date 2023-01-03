@@ -89,6 +89,7 @@ namespace OldDriverManager
             task.ContinueWith(t =>
             {
                 titles.Clear();
+                SortByName();
                 metadataList.ForEach(metadata => titles.Add(metadata.title));
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
