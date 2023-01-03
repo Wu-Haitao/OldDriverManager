@@ -12,12 +12,13 @@
         <Border BorderBrush="#7FFFFFFF" BorderThickness="1" Width="500" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,60,0,0">
             <ListBox x:Name="TitleList" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="TitleList_SelectionChanged"/>
         </Border>
-        <ComboBox x:Name="Sort" HorizontalAlignment="Left" Margin="55,25,0,0" VerticalAlignment="Top" Width="100" Height="20" SelectedIndex="0">
+        <ComboBox x:Name="Sort" HorizontalAlignment="Left" Margin="55,25,0,0" VerticalAlignment="Top" Width="60" Height="20" SelectedIndex="0">
             <ComboBoxItem Content="标题"/>
             <ComboBoxItem Content="评级"/>
         </ComboBox>
-        <TextBox x:Name="KeyFilter" HorizontalAlignment="Left" Margin="190,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="20"/>
-        <Button x:Name="Apply" Content="应用" HorizontalAlignment="Left" Margin="365,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Apply_Click" Padding="2,2,2,2"/>
+        <TextBox x:Name="KeyFilter" HorizontalAlignment="Left" Margin="150,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="20"/>
+        <Button x:Name="Apply" Content="应用" HorizontalAlignment="Left" Margin="310,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Apply_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Graph" Content="总览" HorizontalAlignment="Left" Margin="365,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Graph_Click" Padding="2,2,2,2"/>
         <Button x:Name="Batch" Content="批量" HorizontalAlignment="Left" Margin="420,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Batch_Click" Padding="2,2,2,2"/>
         <Button x:Name="Config" Content="属性" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Config_Click" Padding="2,2,2,2"/>
         <TextBlock x:Name="FileTitle" HorizontalAlignment="Right" Margin="0,55,25,0" TextWrapping="Wrap" Text="影片标题" VerticalAlignment="Top" Height="40" Width="150" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
@@ -26,7 +27,7 @@
         </ScrollViewer>
         <Slider x:Name="Rank" HorizontalAlignment="Right" Margin="0,285,25,0" VerticalAlignment="Top" Width="150" Maximum="5" SmallChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" Height="25" IsEnabled="False"/>
         <Label Content="排序" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
-        <Label Content="筛选" HorizontalAlignment="Left" Margin="160,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
+        <Label Content="筛选" HorizontalAlignment="Left" Margin="120,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
         <Button x:Name="Add" Content="➕ 添加" HorizontalAlignment="Left" Margin="25,440,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Add_Click" Padding="2,2,2,2"/>
         <Button x:Name="Edit" Content="✏ 编辑" HorizontalAlignment="Left" Margin="25,480,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Edit_Click" Padding="2,2,2,2"/>
         <Button x:Name="Delete" Content="➖ 删除" HorizontalAlignment="Left" Margin="25,520,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Delete_Click" Padding="2,2,2,2"/>
@@ -43,7 +44,6 @@
             </Grid>
         </Border>
         <Label Content="文件预览" HorizontalAlignment="Left" Margin="405,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="📋" HorizontalAlignment="Right" Margin="0,25,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="30" Height="20" FontWeight="Normal" FontSize="10"/>
-        <Button Content="👁" HorizontalAlignment="Right" Margin="0,105,25,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Graph_Click" Width="30" Height="20" FontWeight="Normal" FontSize="10"/>
+        <Button HorizontalAlignment="Right" Margin="0,50,20,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="160" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Opacity="0.5"/>
     </Grid>
 </mah:MetroWindow>
