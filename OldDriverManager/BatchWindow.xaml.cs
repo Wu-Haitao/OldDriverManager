@@ -1,20 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using MahApps.Metro.Controls;
+using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 using System.IO;
+using System.Linq;
+using System.Windows;
 using Path = System.IO.Path;
 
 namespace OldDriverManager
@@ -67,6 +56,23 @@ namespace OldDriverManager
             tempMetadataList.ForEach(metadata => returnMetadataList.Remove(metadata));
 
             metadataListlDelegate(returnMetadataList);
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "保存为";
+            saveFileDialog.FileName = "片单";
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            if ((bool)saveFileDialog.ShowDialog())
+            {
+                string listStr = "";
+                foreach (Metadata item in returnMetadataList)
+                {
+                    listStr += item.title + "\n";
+                }
+                File.WriteAllText(saveFileDialog.FileName, listStr);
+            }
         }
     }
 }

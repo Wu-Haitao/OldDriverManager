@@ -1,12 +1,12 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics;
-using MahApps.Metro.Controls;
-using System.IO;
-using Newtonsoft.Json;
 using Path = System.IO.Path;
 
 namespace OldDriverManager
@@ -68,7 +68,7 @@ namespace OldDriverManager
                     {
                         Directory.CreateDirectory(Properties.Settings.Default.RootPath);
                     }
-                    
+
                     StreamWriter streamWriter = new(Path.Combine(Properties.Settings.Default.RootPath, Properties.Settings.Default.ActorsFileName));
                     string json = JsonConvert.SerializeObject(actors);
                     streamWriter.Write(json);

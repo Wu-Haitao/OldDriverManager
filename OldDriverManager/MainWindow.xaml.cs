@@ -1,5 +1,7 @@
-﻿using MahApps.Metro.Controls;
-using FFMpegCore;
+﻿using FFMpegCore;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using MediaInfo;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,8 +19,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Path = System.IO.Path;
 using Size = System.Drawing.Size;
-using MahApps.Metro.Controls.Dialogs;
-using MediaInfo;
 
 namespace OldDriverManager
 {
@@ -310,7 +310,8 @@ namespace OldDriverManager
                     Debug.WriteLine(ex.ToString());
                 }
             }
-            else {
+            else
+            {
                 this.Cursor = Cursors.Arrow;
                 await this.ShowMessageAsync("错误，请检查路径", "");
             }
@@ -436,7 +437,8 @@ namespace OldDriverManager
 
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
-            if (FileTitle.Text != "") {
+            if (FileTitle.Text != "")
+            {
                 Clipboard.SetText(FileTitle.Text);
             }
         }
