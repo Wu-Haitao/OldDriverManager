@@ -6,10 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OldDriverManager"
         mc:Ignorable="d"
-        Title="BatchWindow" Height="200" Width="160" ResizeMode="NoResize" Icon="/Resource/icon.jpg" WindowStartupLocation="CenterScreen">
+        Title="{DynamicResource Batch}" Height="200" Width="160" ResizeMode="NoResize" Icon="/Resource/icon.jpg" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="Import" Content="批量导入" HorizontalAlignment="Center" Height="40" Margin="0,25,0,0" VerticalAlignment="Top" Width="120" Click="Import_Click"/>
-        <Button x:Name="Delete" Content="移除失效" HorizontalAlignment="Center" Height="40" Margin="0,70,0,0" VerticalAlignment="Top" Width="120" Click="Delete_Click"/>
-        <Button x:Name="Export" Content="导出片单" HorizontalAlignment="Center" Height="40" Margin="0,115,0,0" VerticalAlignment="Top" Width="120" Click="Export_Click"/>
+        <Button x:Name="Import" Content="{DynamicResource Import}" HorizontalAlignment="Center" Height="40" Margin="0,25,0,0" VerticalAlignment="Top" Width="120" Click="Import_Click"/>
+        <Button x:Name="Delete" Content="{DynamicResource Validate}" HorizontalAlignment="Center" Height="40" Margin="0,70,0,0" VerticalAlignment="Top" Width="120" Click="Delete_Click"/>
+        <Button x:Name="Export" Content="{DynamicResource Export}" HorizontalAlignment="Center" Height="40" Margin="0,115,0,0" VerticalAlignment="Top" Width="120" Click="Export_Click"/>
     </Grid>
 </mah:MetroWindow>

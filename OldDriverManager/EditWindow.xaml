@@ -8,20 +8,20 @@
         mc:Ignorable="d"
         Title="EditWindow" Height="400" Width="500" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ResizeMode="CanMinimize" WindowStyle="SingleBorderWindow" Closed="Window_Closed" WindowStartupLocation="CenterScreen" Icon="/Resource/icon.jpg">
     <Grid>
-        <Label x:Name="FilePath" Content="请先点击右侧按钮选择文件" HorizontalAlignment="Left" Height="20" Margin="30,30,0,0" VerticalAlignment="Top" Width="280" Padding="5,0,5,0" VerticalContentAlignment="Center"/>
-        <Button x:Name="Select" Content="选择文件" HorizontalAlignment="Right" Height="20" Margin="0,30,30,0" VerticalAlignment="Top" Width="100" Click="Select_Click" Padding="2,2,2,2"/>
-        <Label Content="标题&#xD;&#xA;" HorizontalAlignment="Left" Height="25" Margin="30,80,0,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
+        <Label x:Name="FilePath" Content="{DynamicResource SelectFileHint}" HorizontalAlignment="Left" Height="20" Margin="30,30,0,0" VerticalAlignment="Top" Width="280" Padding="5,0,5,0" VerticalContentAlignment="Center"/>
+        <Button x:Name="Select" Content="{DynamicResource SelectFile}" HorizontalAlignment="Right" Height="20" Margin="0,30,30,0" VerticalAlignment="Top" Width="100" Click="Select_Click" Padding="2,2,2,2"/>
+        <Label Content="{DynamicResource Title}" HorizontalAlignment="Left" Height="25" Margin="30,80,0,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
         <TextBox x:Name="FileTitle" TextWrapping="NoWrap" Margin="75,80,0,0" Height="45" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Left" Width="350" Padding="5,5,5,5"/>
-        <Label Content="评级" HorizontalAlignment="Left" Height="25" Margin="30,140,0,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
+        <Label Content="{DynamicResource Rank}" HorizontalAlignment="Left" Height="25" Margin="30,140,0,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
         <Slider x:Name="Rank" HorizontalAlignment="Left" Margin="75,140,0,0" VerticalAlignment="Top" Width="150" Maximum="5" SmallChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" Height="25"/>
+        <Label Content="{DynamicResource Preview}" HorizontalAlignment="Right" Height="25" Margin="0,140,165,0" VerticalAlignment="Top" Width="60" FontWeight="Bold"/>
         <TextBox x:Name="PreviewTime" HorizontalAlignment="Right" Height="25" Margin="0,140,75,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center" InputScope="Number"/>
-        <Label Content="演员" HorizontalAlignment="Left" Height="25" Margin="30,215,0,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
-        <Label Content="标签" HorizontalAlignment="Right" Height="25" Margin="0,215,185,0" VerticalAlignment="Top" Width="40" FontWeight="Bold"/>
-        <ListBox x:Name="ActorList" HorizontalAlignment="Left" Height="100" Margin="75,200,0,0" VerticalAlignment="Top" Width="150" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Multiple"/>
+        <Label Content="{DynamicResource Minute}" HorizontalAlignment="Right" Height="25" Margin="0,140,30,0" VerticalAlignment="Top" Width="40" FontWeight="Normal"/>
+        <Label Content="{DynamicResource Actors}" HorizontalAlignment="Left" Height="25" Margin="30,215,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold"/>
+        <ListBox x:Name="ActorList" HorizontalAlignment="Left" Height="100" Margin="85,200,0,0" VerticalAlignment="Top" Width="150" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Multiple"/>
+        <Label Content="{DynamicResource Tags}" HorizontalAlignment="Right" Height="25" Margin="0,215,185,0" VerticalAlignment="Top" Width="50" FontWeight="Bold"/>
         <ListBox x:Name="TagList" HorizontalAlignment="Right" Height="100" Margin="0,200,30,0" VerticalAlignment="Top" Width="150" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Multiple"/>
-        <Button x:Name="Finish" Content="完成" HorizontalAlignment="Center" Height="25" Margin="0,320,0,0" VerticalAlignment="Top" Width="200" Click="Finish_Click" Padding="2,2,2,2"/>
-        <Label Content="预览位置" HorizontalAlignment="Right" Height="25" Margin="0,140,165,0" VerticalAlignment="Top" Width="60" FontWeight="Bold"/>
-        <Label Content="分" HorizontalAlignment="Right" Height="25" Margin="0,140,30,0" VerticalAlignment="Top" Width="40" FontWeight="Normal"/>
-
+        <Button x:Name="Finish" Content="{DynamicResource Finish}" HorizontalAlignment="Center" Height="25" Margin="0,320,0,0" VerticalAlignment="Top" Width="200" Click="Finish_Click" Padding="2,2,2,2"/>
+        
     </Grid>
 </mah:MetroWindow>

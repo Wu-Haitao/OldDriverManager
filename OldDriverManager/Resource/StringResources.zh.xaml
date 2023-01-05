@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="AppName">老司机管理器</system:String>
+    <system:String x:Key="Title">标题</system:String>
+    <system:String x:Key="Rank">等级</system:String>
+    <system:String x:Key="Sort">排序</system:String>
+    <system:String x:Key="Filter">筛选</system:String>
+    <system:String x:Key="Apply">应用</system:String>
+    <system:String x:Key="Graph">图示</system:String>
+    <system:String x:Key="Batch">批量</system:String>
+    <system:String x:Key="Data">数据</system:String>
+    <system:String x:Key="Add">➕ 添加</system:String>
+    <system:String x:Key="Edit">✏ 编辑</system:String>
+    <system:String x:Key="Delete">➖ 删除</system:String>
+    <system:String x:Key="OpenPath">📂 打开文件所在路径</system:String>
+    <system:String x:Key="Play">▶ 播放</system:String>
+    <system:String x:Key="Detail">详情</system:String>
+    <system:String x:Key="Attribute">属性</system:String>
+    <system:String x:Key="Preview">预览</system:String>
+    <system:String x:Key="Length">长度</system:String>
+    <system:String x:Key="Resolution">分辨率</system:String>
+    <system:String x:Key="Loading">加载中</system:String>
+    <system:String x:Key="ErrorInPath">错误，请检查路径</system:String>
+    <system:String x:Key="DeletionConfirm">确定要删除吗？</system:String>
+    <system:String x:Key="SameFileExist">相同文件已存在</system:String>
+
+    <system:String x:Key="AddWindow">添加</system:String>
+    <system:String x:Key="EditWindow">编辑</system:String>
+    
+    <system:String x:Key="AddToActors">添加至演员</system:String>
+    <system:String x:Key="AddToTags">添加至标签</system:String>
+    <system:String x:Key="Remove">移除</system:String>
+    <system:String x:Key="Save">保存</system:String>
+    <system:String x:Key="Actors">演员</system:String>
+    <system:String x:Key="Tags">标签</system:String>
+
+    <system:String x:Key="Import">批量导入</system:String>
+    <system:String x:Key="Validate">移除失效</system:String>
+    <system:String x:Key="Export">导出片单</system:String>
+    <system:String x:Key="SaveAs">保存为</system:String>
+
+    <system:String x:Key="SelectFileHint">请先选择文件</system:String>
+    <system:String x:Key="SelectFile">选择文件</system:String>
+    <system:String x:Key="Minute">分</system:String>
+    <system:String x:Key="Finish">完成</system:String>
+    <system:String x:Key="ErrorInInput">错误，请检查输入</system:String>
+
+</ResourceDictionary>

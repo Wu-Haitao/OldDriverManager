@@ -7,43 +7,43 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:OldDriverManager"
         mc:Ignorable="d"
-        Title="老司机管理器" Height="600" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Resource/icon.jpg">
+        Title="{DynamicResource AppName}" Height="600" Width="750" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/Resource/icon.jpg">
     <Grid>
         <Border BorderBrush="#7FFFFFFF" BorderThickness="1" Width="500" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,60,0,0">
             <ListBox x:Name="TitleList" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="TitleList_SelectionChanged"/>
         </Border>
-        <ComboBox x:Name="Sort" HorizontalAlignment="Left" Margin="55,25,0,0" VerticalAlignment="Top" Width="60" Height="20" SelectedIndex="0">
-            <ComboBoxItem Content="标题"/>
-            <ComboBoxItem Content="评级"/>
+        <ComboBox x:Name="Sort" HorizontalAlignment="Left" Margin="60,25,0,0" VerticalAlignment="Top" Width="60" Height="20" SelectedIndex="0">
+            <ComboBoxItem Content="{DynamicResource Title}"/>
+            <ComboBoxItem Content="{DynamicResource Rank}"/>
         </ComboBox>
-        <TextBox x:Name="KeyFilter" HorizontalAlignment="Left" Margin="150,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="20"/>
-        <Button x:Name="Apply" Content="应用" HorizontalAlignment="Left" Margin="310,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Apply_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Graph" Content="总览" HorizontalAlignment="Left" Margin="365,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Graph_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Batch" Content="批量" HorizontalAlignment="Left" Margin="420,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Batch_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Config" Content="属性" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Config_Click" Padding="2,2,2,2"/>
-        <TextBlock x:Name="FileTitle" HorizontalAlignment="Right" Margin="0,55,25,0" TextWrapping="Wrap" Text="影片标题" VerticalAlignment="Top" Height="40" Width="150" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
+        <TextBox x:Name="KeyFilter" HorizontalAlignment="Left" Margin="160,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="20"/>
+        <Button x:Name="Apply" Content="{DynamicResource Apply}" HorizontalAlignment="Left" Margin="310,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Apply_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Graph" Content="{DynamicResource Graph}" HorizontalAlignment="Left" Margin="365,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Graph_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Batch" Content="{DynamicResource Batch}" HorizontalAlignment="Left" Margin="420,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Batch_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Data" Content="{DynamicResource Data}" HorizontalAlignment="Left" Margin="475,25,0,0" VerticalAlignment="Top" Height="20" Width="50" Click="Data_Click" Padding="2,2,2,2"/>
+        <TextBlock x:Name="FileTitle" HorizontalAlignment="Right" Margin="0,55,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="150" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
         <ScrollViewer Margin="0,135,25,0" Height="120" Width="150" VerticalAlignment="Top" HorizontalAlignment="Right" >
             <TextBox x:Name="FileDetails" Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
         </ScrollViewer>
         <Slider x:Name="Rank" HorizontalAlignment="Right" Margin="0,285,25,0" VerticalAlignment="Top" Width="150" Maximum="5" SmallChange="1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" Height="25" IsEnabled="False"/>
-        <Label Content="排序" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
-        <Label Content="筛选" HorizontalAlignment="Left" Margin="120,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="25"/>
-        <Button x:Name="Add" Content="➕ 添加" HorizontalAlignment="Left" Margin="25,440,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Add_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Edit" Content="✏ 编辑" HorizontalAlignment="Left" Margin="25,480,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Edit_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Delete" Content="➖ 删除" HorizontalAlignment="Left" Margin="25,520,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Delete_Click" Padding="2,2,2,2"/>
-        <Button x:Name="OpenPath" Content="📂 打开文件所在路径" HorizontalAlignment="Left" Margin="175,440,0,0" VerticalAlignment="Top" Width="165" Height="25" Click="OpenPath_Click" Padding="2,2,2,2"/>
-        <Button x:Name="Play" Content="▶ 播放" HorizontalAlignment="Left" Margin="175,485,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="16" FontWeight="Normal" Click="Play_Click" Padding="5,5,5,5"/>
-        <TextBlock x:Name="FileProperty" HorizontalAlignment="Left" Margin="25,360,0,0" TextWrapping="Wrap" Text="文件属性" VerticalAlignment="Top" Height="60" Width="315" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
-        <Label Content="影片标题" HorizontalAlignment="Right" Margin="0,20,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80"/>
-        <Label Content="影片详情" HorizontalAlignment="Right" Margin="0,100,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80" Padding="5,5,5,5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label Content="文件属性" HorizontalAlignment="Left" Margin="25,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="{DynamicResource Sort}" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="30"/>
+        <Label Content="{DynamicResource Filter}" HorizontalAlignment="Left" Margin="125,25,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Center" Padding="0,0,0,0" VerticalContentAlignment="Center" Width="30"/>
+        <Button x:Name="Add" Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="25,440,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Add_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Edit" Content="{DynamicResource Edit}" HorizontalAlignment="Left" Margin="25,480,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Edit_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Delete" Content="{DynamicResource Delete}" HorizontalAlignment="Left" Margin="25,520,0,0" VerticalAlignment="Top" Height="25" Width="90" Click="Delete_Click" Padding="2,2,2,2"/>
+        <Button x:Name="OpenPath" Content="{DynamicResource OpenPath}" HorizontalAlignment="Left" Margin="175,440,0,0" VerticalAlignment="Top" Width="165" Height="25" Click="OpenPath_Click" Padding="2,2,2,2"/>
+        <Button x:Name="Play" Content="{DynamicResource Play}" HorizontalAlignment="Left" Margin="175,485,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="16" FontWeight="Normal" Click="Play_Click" Padding="5,5,5,5"/>
+        <TextBlock x:Name="FileProperty" HorizontalAlignment="Left" Margin="25,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="315" FontWeight="Normal" TextTrimming="CharacterEllipsis"/>
+        <Label Content="{DynamicResource Title}" HorizontalAlignment="Right" Margin="0,20,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80"/>
+        <Label Content="{DynamicResource Detail}" HorizontalAlignment="Right" Margin="0,100,95,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="30" Width="80"/>
+        <Label Content="{DynamicResource Attribute}" HorizontalAlignment="Left" Margin="25,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold"/>
         <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,360,25,0" BorderBrush="#7FFFFFFF" BorderThickness="0.5,0.5,0.5,0.5">
             <Grid Background="White">
                 <Image x:Name="Loading" gif:ImageBehavior.AnimatedSource="/Resource/Loading.gif" Width="320" Height="180" Stretch="None"/>
                 <Image x:Name="Poster" Width="320" Height="180" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Grid>
         </Border>
-        <Label Content="文件预览" HorizontalAlignment="Left" Margin="405,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="{DynamicResource Preview}" HorizontalAlignment="Left" Margin="405,325,0,0" VerticalAlignment="Top" FontSize="14" Height="30" Width="80" FontWeight="Bold"/>
         <Button HorizontalAlignment="Right" Margin="0,50,20,0" Padding="0,0,0,0" VerticalAlignment="Top" Click="Copy_Click" Width="160" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Opacity="0.5"/>
     </Grid>
 </mah:MetroWindow>

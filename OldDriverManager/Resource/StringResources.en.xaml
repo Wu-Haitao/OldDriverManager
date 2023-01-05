@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="AppName">Old Driver Manager</system:String>
+    <system:String x:Key="Title">Title</system:String>
+    <system:String x:Key="Rank">Rank</system:String>
+    <system:String x:Key="Sort">Sort</system:String>
+    <system:String x:Key="Filter">Filter</system:String>
+    <system:String x:Key="Apply">Apply</system:String>
+    <system:String x:Key="Graph">Graph</system:String>
+    <system:String x:Key="Batch">Batch</system:String>
+    <system:String x:Key="Data">Data</system:String>
+    <system:String x:Key="Add">➕ Add</system:String>
+    <system:String x:Key="Edit">✏ Edit</system:String>
+    <system:String x:Key="Delete">➖ Delete</system:String>
+    <system:String x:Key="OpenPath">📂 Open File Location</system:String>
+    <system:String x:Key="Play">▶ Play</system:String>
+    <system:String x:Key="Detail">Detail</system:String>
+    <system:String x:Key="Attribute">Attribute</system:String>
+    <system:String x:Key="Preview">Preview</system:String>
+    <system:String x:Key="Length">Length</system:String>
+    <system:String x:Key="Resolution">Resolution</system:String>
+    <system:String x:Key="Loading">Loading</system:String>
+    <system:String x:Key="ErrorInPath">Error in path, please check</system:String>
+    <system:String x:Key="DeletionConfirm">Delete?</system:String>
+    <system:String x:Key="SameFileExist">Same file exists</system:String>
+
+    <system:String x:Key="AddWindow">Add</system:String>
+    <system:String x:Key="EditWindow">Edit</system:String>
+
+    <system:String x:Key="AddToActors">Add to actors</system:String>
+    <system:String x:Key="AddToTags">Add to tags</system:String>
+    <system:String x:Key="Remove">Remove</system:String>
+    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="Actors">Actors</system:String>
+    <system:String x:Key="Tags">Tags</system:String>
+
+    <system:String x:Key="Import">Import</system:String>
+    <system:String x:Key="Validate">Validate</system:String>
+    <system:String x:Key="Export">Export</system:String>
+    <system:String x:Key="SaveAs">Save As</system:String>
+
+    <system:String x:Key="SelectFileHint">Please select file first</system:String>
+    <system:String x:Key="SelectFile">Select File</system:String>
+    <system:String x:Key="Minute">Min</system:String>
+    <system:String x:Key="Finish">Finish</system:String>
+    <system:String x:Key="ErrorInInput">Error in input, please check</system:String>
+
+</ResourceDictionary>

@@ -17,5 +17,11 @@
     <Setting Name="LoadingImgFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Loading.gif</Value>
     </Setting>
+    <Setting Name="LangFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">lang.ini</Value>
+    </Setting>
+    <Setting Name="GraphFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">graph.html</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

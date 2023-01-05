@@ -38,6 +38,7 @@ namespace OldDriverManager
         {
             InitializeComponent();
             Init();
+            UpdateLanguage();
             RefreshDataFromFile();
             ResetInfo();
         }
@@ -45,6 +46,20 @@ namespace OldDriverManager
         void Init()
         {
             TitleList.ItemContainerGenerator.StatusChanged += ItemContainerGenerator_StatusChanged;
+        }
+
+        private void UpdateLanguage()
+        {
+            string[] supportedLang = new string[2] { "zh", "en" };
+            string lang = File.ReadAllText(Properties.Settings.Default.LangFileName);
+            if (!supportedLang.Contains(lang))
+            {
+                lang = supportedLang[0]; //Default
+            }
+
+            ResourceDictionary resDict = new ResourceDictionary();
+            resDict.Source = new Uri(String.Format(@"..\Resource\StringResources.{0}.xaml", lang), UriKind.Relative);
+            Application.Current.Resources.MergedDictionaries.Add(resDict);
         }
 
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
@@ -125,17 +140,15 @@ namespace OldDriverManager
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void Config_Click(object sender, RoutedEventArgs e)
+        private void Data_Click(object sender, RoutedEventArgs e)
         {
             ConfigWindow configWindow = new ConfigWindow();
-            configWindow.Title = "属性";
             configWindow.ShowDialog();
         }
 
         private void Batch_Click(object sender, RoutedEventArgs e)
         {
             BatchWindow batchWindow = new BatchWindow(metadataList);
-            batchWindow.Title = "批量";
             batchWindow.metadataListlDelegate = new MetadataListDelegate(BatchAdd);
             batchWindow.ShowDialog();
         }
@@ -150,7 +163,7 @@ namespace OldDriverManager
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             EditWindow editWindow = new EditWindow();
-            editWindow.Title = "添加";
+            editWindow.Title = Application.Current.Resources["AddWindow"].ToString();
             editWindow.metadataDelegate += new MetadataDelegate(EditMetadata);
             editWindow.ShowDialog();
         }
@@ -161,10 +174,9 @@ namespace OldDriverManager
             Metadata selectedMetadata = metadataList[TitleList.SelectedIndex];
             metadataList.RemoveAt(TitleList.SelectedIndex);
             EditWindow editWindow = new EditWindow(selectedMetadata, TitleList.SelectedIndex);
-            editWindow.Title = "编辑";
+            editWindow.Title = Application.Current.Resources["EditWindow"].ToString();
             editWindow.metadataDelegate += new MetadataDelegate(EditMetadata);
             editWindow.ShowDialog();
-
         }
 
         void EditMetadata(Metadata? metadata, int index)
@@ -178,7 +190,7 @@ namespace OldDriverManager
                 //Check if the file already exists
                 if (metadataList.Any(item => item.path == metadata.path))
                 {
-                    MessageBox.Show("无法添加：相同文件已存在！");
+                    this.ShowMessageAsync(Application.Current.Resources["SameFileExist"].ToString(), "");
                 }
                 else
                 {
@@ -209,7 +221,7 @@ namespace OldDriverManager
             }
             else
             {
-                this.ShowMessageAsync("错误，请检查路径", "");
+                this.ShowMessageAsync(Application.Current.Resources["ErrorInPath"].ToString(), "");
             }
         }
 
@@ -223,7 +235,7 @@ namespace OldDriverManager
             }
             else
             {
-                this.ShowMessageAsync("错误，请检查路径", "");
+                this.ShowMessageAsync(Application.Current.Resources["ErrorInPath"].ToString(), "");
             }
         }
 
@@ -231,7 +243,7 @@ namespace OldDriverManager
         {
             if (TitleList.SelectedIndex == -1) return;
 
-            MessageDialogResult result = await this.ShowMessageAsync("确定要删除吗？", "", MessageDialogStyle.AffirmativeAndNegative);
+            MessageDialogResult result = await this.ShowMessageAsync(Application.Current.Resources["DeletionConfirm"].ToString(), "", MessageDialogStyle.AffirmativeAndNegative);
             if (result == MessageDialogResult.Negative) return;
 
             //if (MessageBox.Show("确定要删除吗？", "确认", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
@@ -271,7 +283,7 @@ namespace OldDriverManager
 
             Rank.Value = selectedMetadata.rank;
 
-            FileProperty.Text = "加载中......";
+            FileProperty.Text = Application.Current.Resources["Loading"] + "......";
 
             Poster.Source = null;
             Loading.Visibility = Visibility.Visible;
@@ -290,7 +302,11 @@ namespace OldDriverManager
 
                     TimeSpan videoDuration = TimeSpan.FromMinutes(videoLength);
 
-                    string fileProperty = String.Format("长度：{0:hh\\:mm\\:ss}\n分辨率：{1} * {2}", videoDuration, videoWidth, videoHeight);
+                    string fileProperty = String.Format(
+                        Application.Current.Resources["Length"] + 
+                        ": {0:hh\\:mm\\:ss}\n" +
+                        Application.Current.Resources["Resolution"] + 
+                        ": {1} * {2}", videoDuration, videoWidth, videoHeight);
                     if (currentIndex != TitleList.SelectedIndex) return;
                     FileProperty.Text = fileProperty;
 
@@ -313,7 +329,7 @@ namespace OldDriverManager
             else
             {
                 this.Cursor = Cursors.Arrow;
-                await this.ShowMessageAsync("错误，请检查路径", "");
+                await this.ShowMessageAsync(Application.Current.Resources["ErrorInPath"].ToString(), "");
             }
         }
 
@@ -482,7 +498,7 @@ namespace OldDriverManager
 
             try
             {
-                File.WriteAllText(Directory.GetCurrentDirectory() + "\\graph.html", html);
+                File.WriteAllText(Properties.Settings.Default.GraphFileName, html);
             }
             catch (Exception ex)
             {
@@ -492,7 +508,7 @@ namespace OldDriverManager
 
         private void OpenGraph()
         {
-            ProcessStartInfo ps = new ProcessStartInfo(Directory.GetCurrentDirectory() + "\\graph.html")
+            ProcessStartInfo ps = new ProcessStartInfo(Properties.Settings.Default.GraphFileName)
             {
                 UseShellExecute = true
             };

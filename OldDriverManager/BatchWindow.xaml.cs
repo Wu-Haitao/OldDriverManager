@@ -26,7 +26,7 @@ namespace OldDriverManager
         private void Import_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "请选择文件";
+            openFileDialog.Title = Application.Current.Resources["SelectFile"].ToString();
             openFileDialog.Multiselect = true;
             if ((bool)openFileDialog.ShowDialog())
             {
@@ -61,8 +61,7 @@ namespace OldDriverManager
         private void Export_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "保存为";
-            saveFileDialog.FileName = "片单";
+            saveFileDialog.Title = Application.Current.Resources["SaveAs"].ToString();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt";
             if ((bool)saveFileDialog.ShowDialog())
             {

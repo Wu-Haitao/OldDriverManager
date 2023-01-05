@@ -92,7 +92,7 @@ namespace OldDriverManager
         private void Select_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "请选择文件";
+            openFileDialog.Title = Application.Current.Resources["SelectFile"].ToString();
             openFileDialog.Multiselect = false;
             if ((bool)openFileDialog.ShowDialog())
             {
@@ -137,7 +137,7 @@ namespace OldDriverManager
             else
             {
                 //MessageBox.Show("错误，请检查格式");
-                this.ShowMessageAsync("错误，请检查格式", "");
+                this.ShowMessageAsync(Application.Current.Resources["ErrorInInput"].ToString(), "");
             }
         }
 
